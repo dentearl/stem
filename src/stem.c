@@ -166,6 +166,7 @@ void addToList(doubleList **dl, double data){
 
 void printList(doubleList *dl){
    if (dl != NULL){
+      printf("%lf%s", dl->d, (dl->next == NULL)?"\n":", " );
       printList(dl->next);
    }
 }
@@ -175,6 +176,13 @@ int countList(doubleList *dl){
       return 0;
    else
       return (1+countList(dl->next));
+}
+
+void releaseList(doubleList *dl){
+   if (dl != NULL){
+      releaseList(dl->next);
+      free(dl);
+   }
 }
 
 double * listToArray(doubleList *dl, int n){
@@ -346,10 +354,11 @@ int main (int argc, char **argv)
    while (scanf("%lf",&d)==1){
       addToList(&list, d);
    }
-   printList(list);
    double *array;
    n = countList(list);
    array = listToArray(list, n);
+   releaseList(list);
    stem_leaf(array, n, scale, width, atom);
+   free(array);
    return 0;
 }
