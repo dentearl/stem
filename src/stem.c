@@ -33,7 +33,7 @@
 int debug_flag;
 int verbose_flag;
 float version_number = 0.1;
-char *version_date = "1 May 2010";
+char *version_date = "2 May 2010";
 char *r_version = "2.11.0 (2010-04-22)";
 
 struct doubleList {
