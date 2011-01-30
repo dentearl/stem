@@ -25,15 +25,15 @@
 
 #include <assert.h>
 #include <math.h>
-#include <limits.h> /* INT_MAX */
+#include <limits.h> /* INT_MAX, LINE_MAX */
 #include <stdio.h>
 #include <stdlib.h> /* abs */
 #include <getopt.h>
 
 int debug_flag;
 int verbose_flag;
-float version_number = 0.1;
-char *version_date = "2 May 2010";
+float my_version_number = 0.1;
+char *my_version_date = "4 May 2010";
 char *r_version = "2.11.0 (2010-04-22)";
 
 struct doubleList {
@@ -43,13 +43,18 @@ struct doubleList {
 typedef struct doubleList doubleList;
 
 void version(void){
-   printf("stem version %.1lf, %s, based on R version %s.\n", version_number, version_date, r_version);
+   printf("stem version %.1lf, %s, based on R version %s.\n", my_version_number, my_version_date, r_version);
    exit(0);
 }
 
 void usage(void){
    fprintf(stderr, "USAGE: --scale [This controls the plot length.] --width [The desired width of plot.] --atom [a tolerance.]\n\n");
-   exit(2);       
+   exit(2);
+}
+
+void memError(void){
+   fprintf(stderr, "Error, unable to allocate memory. Exiting.\n");
+   exit(2);
 }
 
 void help(void){
@@ -150,7 +155,8 @@ void gatherOptions(int argc, char **argv, double *scale, double *width, double *
 
 void initList(doubleList *dl){
    dl = (doubleList *)malloc(sizeof(doubleList));
-   assert(dl!=NULL);
+   if (dl == NULL)
+      memError();
    dl -> d = 0.0;
    dl -> next = NULL;
 }
@@ -158,7 +164,8 @@ void initList(doubleList *dl){
 void addToList(doubleList **dl, double data){
    doubleList *p;
    p = (doubleList *)malloc(sizeof(doubleList));
-   assert(p!=NULL);
+   if (p==NULL)
+      memError();
    p -> d = data;
    p -> next = *dl;
    *dl = p;
@@ -190,7 +197,8 @@ double * listToArray(doubleList *dl, int n){
    double *a = NULL;
    doubleList *p;
    a = calloc(n, sizeof(double));
-   assert(a != NULL);
+   if (a == NULL)
+      memError();
    p = dl;
    for(i=0; i<n; i++){
       a[i] = p->d;
@@ -290,7 +298,7 @@ int stem_leaf(double *x, int n, double scale, int width, double atom){
    pdigits= 1 - floor(log10(c)+0.5);
 
    /*Rprintf("  The decimal point is ");*/
-   printf("  The decimal point is ");
+   printf("  n = %d. The decimal point is ", n);
    if(pdigits == 0)
       /*Rprintf("at the |\n\n");*/
       printf("at the |\n\n");
@@ -351,7 +359,7 @@ int main (int argc, char **argv)
    gatherOptions(argc, argv, &scale, &width, &atom);
    doubleList *list = NULL;
    initList(list);
-   while (scanf("%lf",&d)==1){
+   while (scanf("%lf", &d) == 1){
       addToList(&list, d);
    }
    double *array;
