@@ -2,8 +2,12 @@ SHELL:=/bin/bash
 
 all: bin/stem
 
-bin/stem: src/stem.c
-	mkdir -p bin
+src/%.o: src/%.c
+	gcc -g -Wall -c $<
+	mv $(notdir $*.o) $@
+
+bin/stem: src/stem.c src/dStruct.o
+	mkdir -p $(dir $@)
 	gcc $^ -o $@.tmp -lm
 	mv $@.tmp $@
 

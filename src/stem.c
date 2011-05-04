@@ -29,18 +29,13 @@
 #include <stdio.h>
 #include <stdlib.h> /* abs */
 #include <getopt.h>
+#include "dStruct.h"
 
 int debug_flag;
 int verbose_flag;
 float my_version_number = 0.1;
 char *my_version_date = "4 May 2010";
 char *r_version = "2.11.0 (2010-04-22)";
-
-struct doubleList {
-   double d;
-   struct doubleList *next;
-};
-typedef struct doubleList doubleList;
 
 void version(void){
    printf("stem version %.1lf, %s, based on R version %s.\n", my_version_number, my_version_date, r_version);
@@ -152,67 +147,6 @@ void gatherOptions(int argc, char **argv, double *scale, double *width, double *
    if((*scale < 1) || (*width < 0 ) || (*atom < 0))
       usage();
 }                
-
-void initList(doubleList *dl){
-   dl = (doubleList *)malloc(sizeof(doubleList));
-   if (dl == NULL)
-      memError();
-   dl -> d = 0.0;
-   dl -> next = NULL;
-}
-
-void addToList(doubleList **dl, double data){
-   doubleList *p;
-   p = (doubleList *)malloc(sizeof(doubleList));
-   if (p==NULL)
-      memError();
-   p -> d = data;
-   p -> next = *dl;
-   *dl = p;
-}
-
-void printList(doubleList *dl){
-   if (dl != NULL){
-      printf("%lf%s", dl->d, (dl->next == NULL)?"\n":", " );
-      printList(dl->next);
-   }
-}
-
-int countList(doubleList *dl){
-   if (dl == NULL)
-      return 0;
-   else
-      return (1+countList(dl->next));
-}
-
-void releaseList(doubleList *dl){
-   if (dl != NULL){
-      releaseList(dl->next);
-      free(dl);
-   }
-}
-
-double * listToArray(doubleList *dl, int n){
-   int i;
-   double *a = NULL;
-   doubleList *p;
-   a = calloc(n, sizeof(double));
-   if (a == NULL)
-      memError();
-   p = dl;
-   for(i=0; i<n; i++){
-      a[i] = p->d;
-      p = p->next;
-   }
-   return a;
-}
-
-void printArray(double *a, int n){
-   int i;
-   for (i=0; i<n; i++){
-      printf("%lf%s", a[i], (i==(n-1)?"\n":", " ));
-   }
-}
 
 int dbl_cmp(const void *a, const void *b){
    const double *da = (const double *)a;
