@@ -33,12 +33,12 @@
 
 int debug_flag;
 int verbose_flag;
-float my_version_number = 0.1;
-char *my_version_date = "4 May 2010";
+char *my_version_number = "0.1.2";
+char *my_version_date = "4 May 2011";
 char *r_version = "2.11.0 (2010-04-22)";
 
 void version(void){
-   printf("stem version %.1lf, %s, based on R version %s.\n", my_version_number, my_version_date, r_version);
+   printf("stem version %s, %s, based on R version %s.\n", my_version_number, my_version_date, r_version);
    exit(0);
 }
 
@@ -53,7 +53,11 @@ void memError(void){
 }
 
 void help(void){
-   printf( "  R : A Computer Language for Statistical Data Analysis               \n"
+   printf( "  stem an R-like stem and leaf plot.\n"
+           "  Version %s\n"
+           "  %s\n"
+           "    dent earl, dearl (a) soe ucsc edu\n\n"
+           "  R : A Computer Language for Statistical Data Analysis               \n"
            "  Copyright (C) 1995, 1996  Robert Gentleman and Ross Ihaka           \n"
            "  Copyright (C) 1997-2000   Robert Gentleman, Ross Ihaka and the      \n"
            "                            R Development Core Team                   \n"
@@ -89,7 +93,9 @@ void help(void){
            "  --atom: a tolerance.\n\n"
            "  References:\n"
            "     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S\n"
-           "     Language_.  Wadsworth & Brooks/Cole.\n\n");
+           "     Language_.  Wadsworth & Brooks/Cole.\n\n",
+           my_version_number, my_version_date
+           );
    exit(0);
 
 }
