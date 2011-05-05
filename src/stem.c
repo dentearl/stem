@@ -31,6 +31,7 @@
 #include <getopt.h>
 #include "dStruct.h"
 
+int sorted_flag;
 int debug_flag;
 int verbose_flag;
 float my_version_number = 0.1;
@@ -39,7 +40,7 @@ char *r_version = "2.11.0 (2010-04-22)";
 
 void version(void){
    printf("stem version %.1lf, %s, based on R version %s.\n", my_version_number, my_version_date, r_version);
-   exit(0);
+   exit(EXIT_SUCCESS);
 }
 
 void usage(void){
@@ -49,7 +50,7 @@ void usage(void){
 
 void memError(void){
    fprintf(stderr, "Error, unable to allocate memory. Exiting.\n");
-   exit(2);
+   exit(EXIT_FAILURE);
 }
 
 void help(void){
@@ -87,6 +88,8 @@ void help(void){
            "  --scale: This controls the plot length.\n"
            "  --width: The desired width of plot.\n"
            "  --atom: a tolerance.\n\n"
+           "  --sorted: a flag that indicates the input data is already sorted in\n"
+           "            ascending order. Use this for a speedup on large inputs."
            "  References:\n"
            "     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S\n"
            "     Language_.  Wadsworth & Brooks/Cole.\n\n");
@@ -101,6 +104,7 @@ void gatherOptions(int argc, char **argv, double *scale, double *width, double *
       {
          static struct option long_options[] =
             {
+               {"sorted", no_argument, &sorted_flag, 1},
                {"debug", no_argument, &debug_flag, 1},
                {"verbose", no_argument, &verbose_flag, 1},
                {"help", no_argument, 0, 'h'},
@@ -175,11 +179,13 @@ void stem_print(int close, int dist, int ndigits){
 }
 
 int stem_leaf(double *x, int n, double scale, int width, double atom){
+   extern int sorted_flag;
    double r, c, x1, x2;
    int mm, mu, k, i, j, hi, lo, xi;
    int ldigits, hdigits, ndigits, pdigits;
    /*R_rsort(x,n);*/
-   qsort(x, n, sizeof(double), dbl_cmp);
+   if (!sorted_flag)
+      qsort(x, n, sizeof(double), dbl_cmp);
    if(n <= 1)
       return 1;
 
