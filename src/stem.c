@@ -34,7 +34,7 @@
 int sorted_flag;
 int debug_flag;
 int verbose_flag;
-char *my_version_number = "0.1.2";
+char *my_version_number = "0.1.3";
 char *my_version_date = "4 May 2011";
 char *r_version = "2.11.0 (2010-04-22)";
 
