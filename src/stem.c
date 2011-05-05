@@ -99,7 +99,7 @@ void help(void){
            "     Language_.  Wadsworth & Brooks/Cole.\n\n",
            my_version_number, my_version_date
            );
-   exit(0);
+   exit(EXIT_SUCCESS);
 
 }
 

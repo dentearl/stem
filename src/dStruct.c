@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <float.h> /* DBL_MAX */
+#include <float.h> /* for DBL_MAX */
 #include "dStruct.h"
 
 void initList(doubleList *dl){
@@ -53,23 +53,28 @@ double * listToArray(doubleList *dl, int n){
    if (a == NULL)
       memError();
    p = dl;
-   for( i=0; i < n; i++ ){
-      if (sorted_flag){
-         /* 
-            In this linked list we have everything stored in tail order, so
-            if the input data were 1, 2, 3, 4, ... then the order we'd walk
-            would be ..., 4, 3, 2, 1
-         */
+   if (sorted_flag){
+      /* 
+         In this linked list we have everything stored in tail order, so
+         if the input data were 1, 2, 3, 4, ... then the order we'd walk
+         would be ..., 4, 3, 2, 1
+      */
+      for( i=n-1; i >= 0; i-- ){
          if (p->d > prev){
             fprintf(stderr, "Error, you used --sorted but the data does "
                     "not appear to be sorted at indices %d, %d: %f > %f\n", 
                     n-i-1, n-i, p->d, prev );
             exit(EXIT_FAILURE);
          }
+         a[i] = p->d;
+         prev = p->d;
+         p = p->next;
       }
-      a[i] = p->d;
-      prev = p->d;
-      p = p->next;
+   }else{
+      for( i=0; i < n ; i++ ){
+         a[i] = p->d;
+         p = p->next;
+      }
    }
    return a;
 }
