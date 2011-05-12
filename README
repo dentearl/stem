@@ -28,14 +28,19 @@ Example
 
 Details
 [dearl@machine demo]$ stem --help
+  stem an R-like stem and leaf plot.
+  Version 0.1.3
+  4 May 2011
+    dent earl, dearl (a) soe ucsc edu
+
   R : A Computer Language for Statistical Data Analysis               
   Copyright (C) 1995, 1996  Robert Gentleman and Ross Ihaka           
   Copyright (C) 1997-2000   Robert Gentleman, Ross Ihaka and the      
                             R Development Core Team                   
 **********************************************************************
-  Copyright (c) May 2010    Dent A. Earl, UCSC                           
-  Ported into a stand alone bin by Dent A. Earl, dearl (a) soe ucsc edu  
-  ALL BUGS SHOULD BE REPORTED TO DENT A. EARL, not the R dev team.       
+  Copyright (c) May 2010    Dent A. Earl, UCSC                        
+  Ported into a stand alone bin by Dent A. Earl dearl (a) soe ucsc edu
+  ALL BUGS SHOULD BE REPORTED TO DENT A. EARL, not the R dev team.    
   http://users.soe.ucsc.edu/~dearl/                                   
 **********************************************************************
                                                                       
@@ -53,15 +58,17 @@ Details
   along with this program; if not, a copy is available at             
   http://www.r-project.org/Licenses/                                  
                                                                       
-  'stem' produces a stem-and-leaf plot of the values from STDIN. The     
-  parameter scale can be used to expand the scale of the plot.  A   
-  value of scale=2 will cause the plot to be roughly twice as long  
+  'stem' produces a stem-and-leaf plot of the values in STDIN. The    
+  parameter 'scale' can be used to expand the scale of the plot.  A   
+  value of 'scale=2' will cause the plot to be roughly twice as long  
   as the default.                                                     
 
   stdin: one number on each line of input, no puntuation or text.     
   --scale: This controls the plot length.
   --width: The desired width of plot.
   --atom: a tolerance.
+  --sorted: a flag that indicates the input data is already sorted in
+            ascending order. Use this for a speedup on large inputs.  
 
   References:
      Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S

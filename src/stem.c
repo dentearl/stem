@@ -91,9 +91,9 @@ void help(void){
            "  stdin: one number on each line of input, no puntuation or text.     \n"
            "  --scale: This controls the plot length.\n"
            "  --width: The desired width of plot.\n"
-           "  --atom: a tolerance.\n\n"
+           "  --atom: a tolerance.\n"
            "  --sorted: a flag that indicates the input data is already sorted in\n"
-           "            ascending order. Use this for a speedup on large inputs."
+           "            ascending order. Use this for a speedup on large inputs.\n\n"
            "  References:\n"
            "     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S\n"
            "     Language_.  Wadsworth & Brooks/Cole.\n\n",
