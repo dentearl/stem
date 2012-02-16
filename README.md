@@ -43,9 +43,9 @@ stem software is provided under the GNU GPL version 2.
       Copyright (C) 1997-2000   Robert Gentleman, Ross Ihaka and the      
                                 R Development Core Team                   
     **********************************************************************
-      Copyright (c) May 2010    Dent A. Earl, UCSC                        
-      Ported into a stand alone bin by Dent A. Earl dearl (a) soe ucsc edu
-      ALL BUGS SHOULD BE REPORTED TO DENT A. EARL, not the R dev team.    
+      Copyright (c) May 2010    Dent Earl, UCSC                           
+      Ported into a stand alone bin by Dent Earl dearl (a) soe ucsc edu   
+      ALL BUGS SHOULD BE REPORTED TO DENT EARL, not the R dev team.       
       http://users.soe.ucsc.edu/~dearl/                                   
     **********************************************************************
                                                                           

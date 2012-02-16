@@ -5,8 +5,8 @@
  *                            R Development Core Team
  *
  *  May 2010
- *  Ported into a stand-alone bin by Dent A. Earl, dearl (a) soe ucsc edu
- *  ALL BUGS SHOULD BE REPORTED TO DENT A. EARL
+ *  Ported into a stand-alone bin by Dent Earl, dearl (a) soe ucsc edu
+ *  ALL BUGS SHOULD BE REPORTED TO DENT EARL
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -64,9 +64,9 @@ void help(void) {
             "  Copyright (C) 1997-2000   Robert Gentleman, Ross Ihaka and the      \n"
             "                            R Development Core Team                   \n"
             "**********************************************************************\n"
-            "  Copyright (c) May 2010    Dent A. Earl, UCSC                        \n"
-            "  Ported into a stand alone bin by Dent A. Earl dearl (a) soe ucsc edu\n"
-            "  ALL BUGS SHOULD BE REPORTED TO DENT A. EARL, not the R dev team.    \n"
+            "  Copyright (c) May 2010    Dent Earl, UCSC                           \n"
+            "  Ported into a stand alone bin by Dent Earl dearl (a) soe ucsc edu   \n"
+            "  ALL BUGS SHOULD BE REPORTED TO DENT EARL, not the R dev team.       \n"
             "  http://users.soe.ucsc.edu/~dearl/                                   \n"
             "**********************************************************************\n"
             "                                                                      \n"
