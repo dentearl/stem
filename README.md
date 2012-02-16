@@ -10,8 +10,8 @@ BME Dept, School of Engineering, UCSC
 ## Description
 " stem() from the R project, now on the command line. "
 
-stem is a C program for creating stem and leaf plots 
-on the command line (see wikipedia:Stemplot). It is 
+stem is a C program for creating [stem and leaf plots](http://en.wikipedia.org/wiki/Stemplot)
+on the command line. It is 
 a complete port of the R stem() function from the R 
 project and as such is offered here under GPL 2.
 
