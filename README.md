@@ -8,15 +8,15 @@ BME Dept, School of Engineering, UCSC
 
 
 ## Description
-" stem() from the R project, now on the command line. "
+" `stem()` from the `R` project, now on the command line. "
 
-stem is a C program for creating [stem and leaf plots](http://en.wikipedia.org/wiki/Stemplot)
+`stem` is a C program for creating [stem and leaf plots](http://en.wikipedia.org/wiki/Stemplot)
 on the command line. It is 
-a complete port of the R stem() function from the R 
+a complete port of the `R` `stem()` function from the `R` 
 project and as such is offered here under GPL 2.
 
 ## License
-stem software is provided under the GNU GPL version 2.
+`stem` software is provided under the GNU GPL version 2.
 
 ## Example
     [dearl@machine demo]$ cat testData.txt  | stem
