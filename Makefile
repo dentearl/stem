@@ -2,7 +2,7 @@ SHELL:=/bin/bash -e
 export SHELLOPTS=pipefail
 
 CC=gcc
-OPTS=-Wall -Werror -Wextra -std=c99 -pedantic -g
+OPTS=-Wall -Werror -Wextra -std=c99 -pedantic -g -lm
 
 .PHONY: all clean archive
 all: bin/stem
