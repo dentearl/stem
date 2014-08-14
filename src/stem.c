@@ -39,7 +39,8 @@ char *my_version_date = "4 May 2011";
 char *r_version = "2.11.0 (2010-04-22)";
 
 void version(void) {
-    printf("stem version %s, %s, based on R version %s.\n", my_version_number, my_version_date, r_version);
+    printf("stem version %s, %s, based on R version %s.\n",
+           my_version_number, my_version_date, r_version);
     exit(EXIT_SUCCESS);
 }
 
@@ -115,7 +116,7 @@ void gatherOptions(int argc, char **argv, double *scale, double *width, double *
                     {"verbose", no_argument, &verbose_flag, 1},
                     {"help", no_argument, 0, 'h'},
                     {"version", no_argument, 0, 'v'},
-                    /* These options don't set a flag.                 
+                    /* These options don't set a flag.
                        We distinguish them by their indices. */
                     {"scale",  required_argument, 0, 's'},
                     {"width", required_argument, 0, 'w'},
@@ -156,7 +157,7 @@ void gatherOptions(int argc, char **argv, double *scale, double *width, double *
         }
     if ((*scale < 1) || (*width < 0 ) || (*atom < 0))
         usage();
-}                
+}
 
 int dbl_cmp(const void *a, const void *b) {
     const double *da = (const double *)a;
@@ -215,7 +216,7 @@ int stem_leaf(double *x, int n, double scale, int width, double atom) {
         c = pow(10.,(11.-(int)(log10(r)+10)));
         k = 2; /* not important what */
     }
-    
+
     mu = 10;
     if (k*(k-4)*(k-8)==0) mu = 5;
     if ((k-1)*(k-5)*(k-6)==0) mu = 20;

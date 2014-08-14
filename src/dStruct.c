@@ -54,7 +54,7 @@ double * listToArray(doubleList_t *dl, int n) {
       memError();
    p = dl;
    if (sorted_flag) {
-      /* 
+      /*
          In this linked list we have everything stored in tail order, so
          if the input data were 1, 2, 3, 4, ... then the order we'd walk
          would be ..., 4, 3, 2, 1
@@ -62,7 +62,7 @@ double * listToArray(doubleList_t *dl, int n) {
       for (i=n-1; i >= 0; i--) {
          if (p->d > prev) {
             fprintf(stderr, "Error, you used --sorted but the data does "
-                    "not appear to be sorted at indices %d, %d: %f > %f\n", 
+                    "not appear to be sorted at indices %d, %d: %f > %f\n",
                     n - i - 1, n - i, p->d, prev);
             exit(EXIT_FAILURE);
          }

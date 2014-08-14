@@ -1,5 +1,4 @@
 SHELL:=/bin/bash -e
-export SHELLOPTS=pipefail
 
 CC=gcc
 OPTS=-Wall -Werror -Wextra -std=c99 -pedantic -g
@@ -13,7 +12,7 @@ src/%.o: src/%.c
 
 bin/stem: src/stem.c src/dStruct.o
 	mkdir -p $(dir $@)
-	${CC} $^ -o $@.tmp ${OPTS}
+	${CC} $^ -o $@.tmp ${OPTS} -lm
 	mv $@.tmp $@
 
 archive: stem.tar.gz
